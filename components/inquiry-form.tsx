@@ -10,6 +10,7 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { submitInquiry, type InquiryFormState } from "@/lib/actions";
 import { inquirySchema } from "@/lib/validations";
+import { useEnquiry } from "@/components/providers/enquiry-provider";
 
 const initialState: InquiryFormState = { status: "idle", message: "" };
 
@@ -32,6 +33,22 @@ export function InquiryForm() {
   });
   const [clientErrors, setClientErrors] = useState<Record<string, string>>({});
   const formRef = useRef<HTMLFormElement>(null);
+  const { requestedMaterial, clearRequestedMaterial } = useEnquiry();
+  const lastAutoFillRef = useRef("");
+
+  useEffect(() => {
+    if (!requestedMaterial) return;
+    const prefillLine = `Interested in: ${requestedMaterial}.`;
+
+    setValues((prev) => {
+      const isUntouched = !prev.projectDetails.trim() || prev.projectDetails === lastAutoFillRef.current;
+      const nextDetails = isUntouched ? prefillLine : `${prev.projectDetails}\n${prefillLine}`;
+      lastAutoFillRef.current = nextDetails;
+      return { ...prev, projectDetails: nextDetails };
+    });
+
+    clearRequestedMaterial();
+  }, [requestedMaterial, clearRequestedMaterial]);
 
   useEffect(() => {
     if (state.status === "success") {
@@ -60,7 +77,7 @@ export function InquiryForm() {
   const errors = { ...clientErrors, ...(state.fieldErrors ?? {}) };
 
   return (
-    <section className="relative px-6 py-28 md:px-16" id="enquiry">
+    <section className="relative px-6 py-28 md:px-16" id="enquiry" style={{ scrollMarginTop: "5rem" }}>
       <div className="mx-auto max-w-3xl">
         <p className="overline mb-4 text-center">Get a Quote</p>
         <h2 className="mb-12 text-center font-display text-4xl md:text-5xl">

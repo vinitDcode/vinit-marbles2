@@ -5,6 +5,7 @@ import { MapPin, Phone, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const ADDRESS = "Plot No. 44 A, Tikri Khurd Village, Narela, New Delhi, Delhi, 110036";
+const WHATSAPP_MESSAGE = "Hi, I'm interested in Vinit Marbles stone & granite for my project.";
 
 const owners = [
   {
@@ -23,7 +24,7 @@ const owners = [
 
 export function ContactSection() {
   return (
-    <section className="relative px-6 py-28 md:px-16">
+    <section id="contact" className="relative px-6 py-28 md:px-16" style={{ scrollMarginTop: "5rem" }}>
       <div className="pointer-events-none absolute left-0 bottom-0 z-10 h-[400px] w-[400px] rounded-full bg-[#D4AF37]/10 blur-3xl" />
       <div className="pointer-events-none absolute right-[8%] top-0 z-10 h-[240px] w-[240px] rounded-full bg-[#C7D6EC]/[0.06] blur-3xl" />
 
@@ -61,7 +62,7 @@ export function ContactSection() {
 
                 <Button asChild variant="glass" size="icon" className="shrink-0">
                   <a
-                    href={`https://wa.me/${owner.phone}`}
+                    href={`https://wa.me/${owner.phone}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`WhatsApp ${owner.name}`}

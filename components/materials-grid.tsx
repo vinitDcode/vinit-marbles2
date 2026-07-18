@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
+import { useEnquiry } from "@/components/providers/enquiry-provider";
 
 type Material = {
   name: string;
@@ -51,8 +53,15 @@ const materials: Material[] = [
 ];
 
 export function MaterialsGrid() {
+  const { requestMaterial } = useEnquiry();
+
+  function handleEnquire(materialName: string) {
+    requestMaterial(materialName);
+    document.getElementById("enquiry")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
   return (
-    <section className="relative px-6 py-28 md:px-16">
+    <section id="materials" className="relative px-6 py-28 md:px-16" style={{ scrollMarginTop: "5rem" }}>
       <div className="pointer-events-none absolute right-0 top-0 z-10 h-[350px] w-[350px] rounded-full bg-[#D4AF37]/10 blur-3xl" />
       <div className="pointer-events-none absolute left-[10%] bottom-0 z-10 h-[260px] w-[260px] rounded-full bg-[#C7D6EC]/[0.05] blur-3xl" />
 
@@ -93,6 +102,14 @@ export function MaterialsGrid() {
                 <p className="mt-2 max-w-md text-sm text-white/60">
                   {material.description}
                 </p>
+                <button
+                  type="button"
+                  onClick={() => handleEnquire(material.name)}
+                  className="btn-sheen mt-4 inline-flex w-fit items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-gold-light transition-colors duration-300 hover:text-white focus-visible:outline-none focus-visible:text-white"
+                >
+                  Enquire about this stone
+                  <ArrowUpRight size={14} />
+                </button>
               </div>
             </motion.div>
           ))}
