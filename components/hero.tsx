@@ -23,14 +23,15 @@ function MaskedWord({ word, delay }: { word: string; delay: number }) {
 export function Hero() {
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-6">
-      {/* Ambient radial glows for the glass to refract against */}
+      {/* Ambient radial glows for the glass to refract against — warm gold paired with a cool platinum counter-glow, like light splitting across a polished slab */}
       <div className="pointer-events-none absolute left-1/4 top-1/3 z-10 h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-[#D4AF37]/10 blur-3xl" />
       <div className="pointer-events-none absolute right-1/4 bottom-1/4 z-10 h-[380px] w-[380px] translate-x-1/2 rounded-full bg-[#D4AF37]/10 blur-3xl" />
+      <div className="pointer-events-none absolute right-[15%] top-[18%] z-10 h-[260px] w-[260px] rounded-full bg-[#C7D6EC]/[0.06] blur-3xl" />
 
-      {/* Massive background watermark */}
+      {/* Massive background watermark, with a slow shimmer drifting across it */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -z-10 select-none whitespace-nowrap font-display font-black text-[26vw] leading-none text-white/[0.025]"
+        className="watermark-shimmer pointer-events-none absolute -z-10 select-none whitespace-nowrap font-display font-black text-[26vw] leading-none"
       >
         VINIT
       </div>

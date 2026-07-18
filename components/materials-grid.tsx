@@ -25,7 +25,7 @@ const materials: Material[] = [
     name: "Black Galaxy Granite",
     origin: "Andhra Pradesh",
     description:
-      "Deep obsidian granite flecked with copper-gold crystals - a signature choice for premium countertops and flooring.",
+      "Deep obsidian granite flecked with copper-gold and pale silvered crystals - a signature choice for premium countertops and flooring.",
     image:
       "https://images.unsplash.com/photo-1615874959474-d609969a20ed?q=80&w=1600&auto=format&fit=crop",
     span: "md:col-span-5 md:row-span-1",
@@ -54,6 +54,7 @@ export function MaterialsGrid() {
   return (
     <section className="relative px-6 py-28 md:px-16">
       <div className="pointer-events-none absolute right-0 top-0 z-10 h-[350px] w-[350px] rounded-full bg-[#D4AF37]/10 blur-3xl" />
+      <div className="pointer-events-none absolute left-[10%] bottom-0 z-10 h-[260px] w-[260px] rounded-full bg-[#C7D6EC]/[0.05] blur-3xl" />
 
       <div className="mx-auto max-w-7xl">
         <p className="overline mb-4">Our Collection</p>
@@ -66,7 +67,7 @@ export function MaterialsGrid() {
           {materials.map((material, i) => (
             <motion.div
               key={material.name}
-              className={`group relative overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-2xl shadow-[0_8px_32px_0_rgba(0,0,0,0.5)] transition-all duration-500 hover:-translate-y-2 hover:border-[#D4AF37]/40 ${material.span}`}
+              className={`stone-ring group relative overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-2xl shadow-[0_8px_32px_0_rgba(0,0,0,0.5)] transition-all duration-500 hover:-translate-y-2 hover:border-[#D4AF37]/40 ${material.span}`}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
@@ -81,6 +82,7 @@ export function MaterialsGrid() {
                   className="object-cover opacity-70 transition-transform duration-700 ease-out group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/60 to-transparent" />
+                <div className="stone-sheen" />
               </div>
 
               <div className="relative z-10 flex h-full flex-col justify-end p-7">

@@ -68,7 +68,7 @@ export function InquiryForm() {
         </h2>
 
         <motion.div
-          className="rounded-2xl border border-white/[0.08] bg-white/[0.03] p-8 backdrop-blur-2xl shadow-[0_8px_32px_0_rgba(0,0,0,0.5)] md:p-12"
+          className="stone-ring rounded-2xl border border-white/[0.08] bg-white/[0.03] p-8 backdrop-blur-2xl shadow-[0_8px_32px_0_rgba(0,0,0,0.5)] md:p-12"
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}

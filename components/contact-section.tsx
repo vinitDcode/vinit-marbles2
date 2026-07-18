@@ -25,6 +25,7 @@ export function ContactSection() {
   return (
     <section className="relative px-6 py-28 md:px-16">
       <div className="pointer-events-none absolute left-0 bottom-0 z-10 h-[400px] w-[400px] rounded-full bg-[#D4AF37]/10 blur-3xl" />
+      <div className="pointer-events-none absolute right-[8%] top-0 z-10 h-[240px] w-[240px] rounded-full bg-[#C7D6EC]/[0.06] blur-3xl" />
 
       <div className="mx-auto max-w-6xl">
         <p className="overline mb-4">Visit &amp; Connect</p>
@@ -41,7 +42,7 @@ export function ContactSection() {
           {owners.map((owner, i) => (
             <motion.div
               key={owner.name}
-              className="relative rounded-2xl border border-white/[0.08] bg-white/[0.03] p-8 backdrop-blur-2xl shadow-[0_8px_32px_0_rgba(0,0,0,0.5)]"
+              className="stone-ring relative rounded-2xl border border-white/[0.08] bg-white/[0.03] p-8 backdrop-blur-2xl shadow-[0_8px_32px_0_rgba(0,0,0,0.5)]"
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}

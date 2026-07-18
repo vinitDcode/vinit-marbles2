@@ -65,6 +65,133 @@ body {
   display: inline-block;
 }
 
+/* ---------------------------------------------------------------------
+   Stone highlight system — evokes light catching a polished slab: a
+   warm gold flash crossing into a cool platinum glint, the same way
+   Black Galaxy granite throws both copper and pale mineral flecks.
+   Applied as an additive layer on top of existing panel/button styles.
+   --------------------------------------------------------------------- */
+
+/* Hairline gradient ring around glass panels, like a bevelled stone edge */
+.stone-ring {
+  position: relative;
+}
+.stone-ring::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    128deg,
+    rgba(230, 200, 117, 0.55) 0%,
+    rgba(199, 214, 236, 0.65) 38%,
+    rgba(230, 200, 117, 0.12) 55%,
+    transparent 80%
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.55;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+.group:hover .stone-ring::before,
+.stone-ring:hover::before {
+  opacity: 1;
+}
+
+/* Diagonal light-sweep overlay — a beam of light gliding across the surface */
+.stone-sheen {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  border-radius: inherit;
+}
+.stone-sheen::after {
+  content: "";
+  position: absolute;
+  inset: -20% -40%;
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(199, 214, 236, 0.4) 46%,
+    rgba(230, 200, 117, 0.55) 50%,
+    rgba(199, 214, 236, 0.4) 54%,
+    transparent 70%
+  );
+  mix-blend-mode: screen;
+  transform: translateX(-130%);
+  transition: transform 1.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.group:hover .stone-sheen::after,
+.stone-sheen:hover::after,
+button:hover .stone-sheen::after {
+  transform: translateX(130%);
+}
+
+/* Slow ambient shimmer for large-scale display type (used sparingly) */
+@keyframes watermark-sheen {
+  0%,
+  100% {
+    background-position: -120% 0;
+  }
+  50% {
+    background-position: 120% 0;
+  }
+}
+.watermark-shimmer {
+  background-image: linear-gradient(
+    100deg,
+    rgba(255, 255, 255, 0.025) 42%,
+    rgba(199, 214, 236, 0.11) 48%,
+    rgba(230, 200, 117, 0.14) 52%,
+    rgba(255, 255, 255, 0.025) 58%
+  );
+  background-size: 260% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: watermark-sheen 9s ease-in-out infinite;
+}
+
+.platinum-text {
+  background-image: linear-gradient(180deg, #edf3ff 0%, #8ca3c4 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Same light-sweep motif, self-contained so it can sit directly on a
+   <button>/<a> without an extra wrapping element (keeps it Slot-safe). */
+.btn-sheen {
+  position: relative;
+  overflow: hidden;
+}
+.btn-sheen::after {
+  content: "";
+  position: absolute;
+  inset: -60% -60%;
+  background: linear-gradient(
+    115deg,
+    transparent 35%,
+    rgba(199, 214, 236, 0.45) 47%,
+    rgba(230, 200, 117, 0.6) 50%,
+    rgba(199, 214, 236, 0.45) 53%,
+    transparent 65%
+  );
+  mix-blend-mode: screen;
+  transform: translateX(-130%);
+  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+.btn-sheen:hover::after {
+  transform: translateX(130%);
+}
+
 /* respect reduced motion everywhere */
 @media (prefers-reduced-motion: reduce) {
   *,
