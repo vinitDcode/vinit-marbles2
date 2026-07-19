@@ -47,7 +47,7 @@ export function Hero() {
         </motion.p>
 
         <h1 className="font-display text-[13vw] leading-[0.95] sm:text-7xl md:text-8xl lg:text-9xl">
-          <MaskedWord word="Vinit" delay={1.6} />
+          <MaskedWord word="Vinit" delay={1.6} />{" "}
           <span className="gold-text">
             <MaskedWord word="Marbles" delay={1.75} />
           </span>
