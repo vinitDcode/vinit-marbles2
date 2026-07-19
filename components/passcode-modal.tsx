@@ -61,13 +61,14 @@ export function PasscodeModal({
               />
             </Dialog.Overlay>
             <Dialog.Content asChild forceMount>
-              <motion.div
-                className="glass fixed left-1/2 top-1/2 z-[9991] w-[90vw] max-w-sm -translate-x-1/2 -translate-y-1/2 rounded-2xl p-8"
-                initial={{ opacity: 0, scale: 0.92, y: 10 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.95, y: 6 }}
-                transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-              >
+              <div className="fixed inset-0 z-[9991] flex items-center justify-center p-4">
+                <motion.div
+                  className="glass w-full max-w-sm rounded-2xl p-8"
+                  initial={{ opacity: 0, scale: 0.92, y: 10 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95, y: 6 }}
+                  transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                >
                 <Dialog.Close asChild>
                   <button
                     aria-label="Close"
@@ -111,7 +112,8 @@ export function PasscodeModal({
                     {isPending ? "Verifying..." : "Unlock"}
                   </Button>
                 </form>
-              </motion.div>
+                </motion.div>
+              </div>
             </Dialog.Content>
           </Dialog.Portal>
         )}
