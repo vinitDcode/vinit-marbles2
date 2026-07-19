@@ -14,8 +14,10 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       <input
         ref={ref}
         className={cn(
-          "peer w-full bg-transparent border-0 border-b py-3 text-white placeholder:text-white/30 focus:outline-none focus:ring-0 transition-colors",
-          error ? "border-red-400/60" : "border-white/15 focus:border-gold",
+          "peer w-full rounded-xl border bg-white/[0.03] px-4 py-3 text-white placeholder:text-white/30 backdrop-blur-xl transition-colors focus:outline-none focus:ring-0",
+          error
+            ? "border-red-400/50 focus:border-red-400/70"
+            : "border-white/[0.1] focus:border-gold/60",
           className
         )}
         {...props}

@@ -23,11 +23,15 @@ const inter = Inter({
   display: "swap",
 });
 
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000");
+
 export const metadata: Metadata = {
   title: "Vinit Marbles | Masterpieces in Stone & Granite",
   description:
     "Vinit Marbles - premium Indian and imported marble, Black Galaxy granite, and bespoke natural stone for architects, builders, and homeowners across Delhi NCR.",
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
+  metadataBase: new URL(siteUrl),
   openGraph: {
     title: "Vinit Marbles | Masterpieces in Stone & Granite",
     description:

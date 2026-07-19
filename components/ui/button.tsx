@@ -15,7 +15,7 @@ const buttonVariants = cva(
           "bg-white/[0.03] backdrop-blur-2xl border border-white/[0.08] shadow-[0_8px_32px_0_rgba(0,0,0,0.5)] text-white hover:border-gold/40 hover:-translate-y-0.5",
         ghost: "text-white/70 hover:text-white",
         outline:
-          "border border-white/20 text-white hover:border-gold/50 hover:text-gold-light",
+          "border border-white/20 bg-white/[0.02] backdrop-blur-md text-white hover:border-gold/50 hover:text-gold-light",
       },
       size: {
         default: "h-12 px-7",

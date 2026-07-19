@@ -39,10 +39,36 @@ body {
 
 .glass {
   background-color: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  background-image: linear-gradient(
+    165deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0.015) 40%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+  box-shadow:
+    0 8px 32px 0 rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.06);
+}
+
+/* Lighter blur on small screens: several glass panels can stack on one
+   view, and mobile GPUs pay more for backdrop-filter than desktop does. */
+@media (max-width: 767px) {
+  .glass {
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+  }
+}
+
+/* Fallback for browsers with no backdrop-filter support at all (rare in
+   2026, but Firefox <103 and some in-app webviews still lack it) - without
+   this, panels would render as a barely-there, low-contrast surface. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass {
+    background-color: rgba(10, 10, 10, 0.88);
+  }
 }
 
 .gold-text {
@@ -99,7 +125,8 @@ body {
   transition: opacity 0.4s ease;
 }
 .group:hover .stone-ring::before,
-.stone-ring:hover::before {
+.stone-ring:hover::before,
+.stone-ring:active::before {
   opacity: 1;
 }
 
@@ -129,7 +156,9 @@ body {
 }
 .group:hover .stone-sheen::after,
 .stone-sheen:hover::after,
-button:hover .stone-sheen::after {
+.stone-sheen:active::after,
+button:hover .stone-sheen::after,
+button:active .stone-sheen::after {
   transform: translateX(130%);
 }
 
@@ -188,7 +217,8 @@ button:hover .stone-sheen::after {
   transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
   pointer-events: none;
 }
-.btn-sheen:hover::after {
+.btn-sheen:hover::after,
+.btn-sheen:active::after {
   transform: translateX(130%);
 }
 

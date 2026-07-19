@@ -43,7 +43,7 @@ export function ContactSection() {
           {owners.map((owner, i) => (
             <motion.div
               key={owner.name}
-              className="stone-ring relative rounded-2xl border border-white/[0.08] bg-white/[0.03] p-8 backdrop-blur-2xl shadow-[0_8px_32px_0_rgba(0,0,0,0.5)]"
+              className="stone-ring glass relative rounded-2xl p-8"
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}

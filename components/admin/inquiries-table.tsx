@@ -27,14 +27,14 @@ export function InquiriesTable({ inquiries }: { inquiries: TradeInquiry[] }) {
 
   if (rows.length === 0) {
     return (
-      <div className="rounded-2xl border border-white/[0.08] bg-white/[0.03] p-16 text-center backdrop-blur-2xl">
+      <div className="glass rounded-2xl p-16 text-center">
         <p className="text-white/40">No enquiries yet. New leads will appear here.</p>
       </div>
     );
   }
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-2xl shadow-[0_8px_32px_0_rgba(0,0,0,0.5)]">
+    <div className="glass overflow-hidden rounded-2xl">
       <div className="overflow-x-auto">
         <table className="w-full min-w-[720px] text-left text-sm">
           <thead>

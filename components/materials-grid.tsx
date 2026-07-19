@@ -76,7 +76,7 @@ export function MaterialsGrid() {
           {materials.map((material, i) => (
             <motion.div
               key={material.name}
-              className={`stone-ring group relative overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-2xl shadow-[0_8px_32px_0_rgba(0,0,0,0.5)] transition-all duration-500 hover:-translate-y-2 hover:border-[#D4AF37]/40 ${material.span}`}
+              className={`stone-ring glass group relative overflow-hidden rounded-2xl transition-all duration-500 hover:-translate-y-2 hover:border-[#D4AF37]/40 ${material.span}`}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}

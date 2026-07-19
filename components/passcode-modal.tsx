@@ -62,7 +62,7 @@ export function PasscodeModal({
             </Dialog.Overlay>
             <Dialog.Content asChild forceMount>
               <motion.div
-                className="fixed left-1/2 top-1/2 z-[9991] w-[90vw] max-w-sm -translate-x-1/2 -translate-y-1/2 rounded-2xl bg-white/[0.03] p-8 backdrop-blur-2xl border border-white/[0.08] shadow-[0_8px_32px_0_rgba(0,0,0,0.5)]"
+                className="glass fixed left-1/2 top-1/2 z-[9991] w-[90vw] max-w-sm -translate-x-1/2 -translate-y-1/2 rounded-2xl p-8"
                 initial={{ opacity: 0, scale: 0.92, y: 10 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: 6 }}

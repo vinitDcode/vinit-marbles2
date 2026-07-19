@@ -55,12 +55,14 @@ export function CustomCursor() {
         y: smoothY,
         translateX: "-50%",
         translateY: "-50%",
+        WebkitBackdropFilter: isHovering ? "blur(6px) saturate(160%)" : "none",
       }}
       animate={{
         width: isHovering ? 44 : 8,
         height: isHovering ? 44 : 8,
         backgroundColor: isHovering ? "rgba(212,175,55,0.08)" : "#D4AF37",
         borderWidth: isHovering ? 1 : 0,
+        backdropFilter: isHovering ? "blur(6px) saturate(160%)" : "blur(0px)",
       }}
       transition={{ type: "spring", damping: 25, stiffness: 300 }}
       aria-hidden="true"
