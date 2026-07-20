@@ -57,7 +57,20 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const token = await signAdminSession();
+  let token: string;
+  try {
+    token = await signAdminSession();
+  } catch (err) {
+    console.error("Failed to sign admin session:", err);
+    return NextResponse.json(
+      {
+        success: false,
+        message: "Vault session could not be created. Check ADMIN_JWT_SECRET on the server.",
+      },
+      { status: 500 }
+    );
+  }
+
   const response = NextResponse.json({ success: true });
   response.cookies.set(adminCookieOptions.name, token, adminCookieOptions);
   return response;
